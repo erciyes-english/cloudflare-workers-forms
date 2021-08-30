@@ -1,0 +1,7 @@
+name = "forms"
+type = "webpack"
+
+account_id = "d911fb5d5feadb71049c55a438c52f65"
+workers_dev = true
+route = ""
+zone_id = ""
