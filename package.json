@@ -11,6 +11,8 @@
   "author": "Clay Harmon <clay@clayharmon.me>",
   "license": "MIT",
   "devDependencies": {
+    "ajv": "^8.6.2",
+    "ajv-formats": "^2.1.1",
     "prettier": "^1.18.2"
   },
   "dependencies": {
