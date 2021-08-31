@@ -6,10 +6,10 @@
   "main": "src/index.js",
   "scripts": {
     "predev": "node src/scripts/compile.js",
-    "prepublish": "node src/scripts/compile.js",
+    "predeploy": "node src/scripts/compile.js",
     "prebuild": "node src/scripts/compile.js",
     "dev": "wrangler dev",
-    "publish": "wrangler publish",
+    "deploy": "wrangler publish",
     "build": "wrangler build",
     "compile": "node src/scripts/compile.js",
     "format": "prettier --write '**/*.{js,css,json,md}'"
