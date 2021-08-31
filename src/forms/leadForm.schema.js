@@ -4,28 +4,38 @@ module.exports.default = {
     id: { type: 'string' },
     fname: {
       type: 'string',
+      minLength: 2,
+      maxLength: 50,
     },
 
     lname: {
       type: 'string',
+      minLength: 2,
+      maxLength: 50,
     },
 
     email: {
       type: 'string',
       format: 'email',
+      maxLength: 200,
     },
 
     phone: {
       type: 'string',
       format: 'tel',
+      maxLength: 200,
+    },
+    fname: {
+      type: 'string',
     },
 
     interest: {
       type: 'string',
+      maxLength: 100,
     },
 
     gdpr: {
-      type: 'boolean',
+      const: 'true',
     },
   },
   required: ['id', 'fname', 'lname', 'email', 'phone', 'interest', 'gdpr'],

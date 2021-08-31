@@ -1,65 +1,13 @@
-import {
-  JsonResponse,
-  hasMissingFields,
-  isValidEmail,
-  isValidPhone,
-  isValidMinLength,
-  isValidMaxLength,
-} from '../lib/helpers'
+import { JsonResponse } from '../lib/helpers'
+
+import validate from '../scripts/leadForm.validate'
 
 const leadForm = async form => {
-  const required_fields = [
-    'fname',
-    'lname',
-    'email',
-    'phone',
-    'interest',
-    'gdpr',
-  ]
-
-  const missingField = hasMissingFields(form, required_fields)
-
-  if (missingField) {
-    return JsonResponse(
-      { message: `${missingField} is required.`, field: missingField },
-      400,
-    )
+  if (validate.errors) {
+    const message = validate.errors[0].message
+    const field = validate.errors[0].instancePath.replace('/', '')
+    return JsonResponse({ message, field }, 400)
   }
 
-  if (!isValidMinLength(form.fname, 2)) {
-    return JsonResponse(
-      { message: `Name must be a minimum of 2 characters`, field: 'fname' },
-      400,
-    )
-  }
-
-  if (!isValidMaxLength(form.fname, 50)) {
-    return JsonResponse(
-      { message: `Name must be a maximum of 50 characters`, field: 'fname' },
-      400,
-    )
-  }
-  if (!isValidMinLength(form.lname, 2)) {
-    return JsonResponse(
-      { message: `Name must be a minimum of 2 characters`, field: 'lname' },
-      400,
-    )
-  }
-
-  if (!isValidMaxLength(form.lname, 50)) {
-    return JsonResponse(
-      { message: `Name must be a maximum of 50 characters`, field: 'lname' },
-      400,
-    )
-  }
-
-  if (!isValidEmail(form.email)) {
-    return JsonResponse({ message: `Email is invalid.`, field: 'email' }, 400)
-  }
-  if (!isValidPhone(form.phone)) {
-    return JsonResponse({ message: `Phone is invalid.`, field: 'phone' }, 400)
-  }
-  return JsonResponse(form, 200)
+  return JsonResponse({ message: 'Sent' }, 200)
 }
-
-export default leadForm

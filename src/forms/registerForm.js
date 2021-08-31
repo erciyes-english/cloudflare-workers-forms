@@ -1,11 +1,4 @@
-import {
-  JsonResponse,
-  hasMissingFields,
-  isValidEmail,
-  isValidPhone,
-  isValidMinLength,
-  isValidMaxLength,
-} from '../lib/helpers'
+import { JsonResponse } from '../lib/helpers'
 
 import validate from '../scripts/registerForm.validate'
 
