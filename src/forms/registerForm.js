@@ -3,8 +3,6 @@ import { JsonResponse } from '../lib/helpers'
 import validate from '../scripts/registerForm.validate'
 
 const registerForm = async form => {
-  const valid = validate(form)
-
   if (validate.errors) {
     const message = validate.errors[0].message
     const field = validate.errors[0].instancePath.replace('/', '')

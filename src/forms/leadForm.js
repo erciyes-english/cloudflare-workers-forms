@@ -11,3 +11,5 @@ const leadForm = async form => {
 
   return JsonResponse({ message: 'Sent' }, 200)
 }
+
+export default leadForm
