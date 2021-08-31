@@ -9,43 +9,17 @@ const ajv = new Ajv({
 })
 addFormats(ajv, ['email'])
 
-const schema = {
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    fname: {
-      type: 'string',
-    },
+const compileAndSave = (schema, name) => {
+  const validate = ajv.compile(schema)
+  let moduleCode = standaloneCode(ajv, validate)
 
-    lname: {
-      type: 'string',
-    },
-
-    email: {
-      type: 'string',
-      format: 'email',
-    },
-
-    phone: {
-      type: 'string',
-      format: 'tel',
-    },
-
-    interest: {
-      type: 'string',
-    },
-
-    gdpr: {
-      type: 'boolean',
-    },
-  },
-  required: ['id', 'fname', 'lname', 'email', 'phone', 'interest', 'gdpr'],
-  additionalProperties: false,
+  const fs = require('fs')
+  const path = require('path')
+  fs.writeFileSync(path.join(__dirname, `/${name}.js`), moduleCode)
 }
 
-const validate = ajv.compile(schema)
-let moduleCode = standaloneCode(ajv, validate)
+const leadFormSchema = require('../forms/leadForm.schema').default
+compileAndSave(leadFormSchema, 'leadForm.validate')
 
-const fs = require('fs')
-const path = require('path')
-fs.writeFileSync(path.join(__dirname, '/validate.js'), moduleCode)
+const registerFormSchema = require('../forms/registerForm.schema').default
+compileAndSave(registerFormSchema, 'registerForm.validate')

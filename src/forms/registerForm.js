@@ -7,7 +7,7 @@ import {
   isValidMaxLength,
 } from '../lib/helpers'
 
-import validate from '../scripts/validate'
+import validate from '../scripts/registerForm.validate'
 
 const registerForm = async form => {
   const valid = validate(form)
