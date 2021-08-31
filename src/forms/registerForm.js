@@ -5,9 +5,9 @@ import {
   isValidPhone,
   isValidMinLength,
   isValidMaxLength,
-} from '../helpers'
+} from '../lib/helpers'
 
-import validate from '../validate'
+import validate from '../scripts/validate'
 
 const registerForm = async form => {
   const valid = validate(form)

@@ -1,11 +1,11 @@
 const { default: Ajv, _ } = require('ajv')
 const addFormats = require('ajv-formats').default
-const myFormats = require('./my-formats')
+const myFormats = require('../lib/my-formats')
 const standaloneCode = require('ajv/dist/standalone').default
 
 const ajv = new Ajv({
   formats: myFormats,
-  code: { source: true, formats: _`require("./my-formats")` },
+  code: { source: true, formats: _`require("../lib/my-formats")` },
 })
 addFormats(ajv, ['email'])
 

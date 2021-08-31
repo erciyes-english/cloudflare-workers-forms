@@ -1,6 +1,6 @@
 import leadForm from './forms/leadForm'
 import registerForm from './forms/registerForm'
-import { JsonResponse } from './helpers'
+import { JsonResponse } from './lib/helpers'
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))

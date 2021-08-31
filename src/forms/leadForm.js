@@ -5,7 +5,7 @@ import {
   isValidPhone,
   isValidMinLength,
   isValidMaxLength,
-} from '../helpers'
+} from '../lib/helpers'
 
 const leadForm = async form => {
   const required_fields = [
