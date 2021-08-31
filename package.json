@@ -5,7 +5,13 @@
   "description": "A template for kick starting a Cloudflare Workers project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "predev": "node compile.js",
+    "prepublish": "node compile.js",
+    "prebuild": "node compile.js",
+    "dev": "wrangler dev",
+    "publish": "wrangler publish",
+    "build": "wrangler build",
+    "compile": "node compile.js",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "Clay Harmon <clay@clayharmon.me>",
