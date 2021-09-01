@@ -1,3 +1,4 @@
+import theToken from '../lib/googleSheets'
 import { JsonResponse } from '../lib/helpers'
 
 import validate from '../scripts/registerForm.validate'
@@ -11,6 +12,7 @@ const registerForm = async form => {
     return JsonResponse({ message, field }, 400)
   }
 
+  const stuff = await theToken(form)
   return JsonResponse({ message: 'Sent' }, 200)
 }
 

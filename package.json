@@ -22,6 +22,7 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
+    "@sagi.io/workers-jwt": "^0.0.20",
     "libphonenumber-js": "^1.9.25"
   }
 }
