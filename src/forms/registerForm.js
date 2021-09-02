@@ -1,4 +1,4 @@
-import theToken from '../lib/googleSheets'
+import saveToSheets from '../lib/googleSheets'
 import { JsonResponse } from '../lib/helpers'
 
 import validate from '../scripts/registerForm.validate'
@@ -12,8 +12,12 @@ const registerForm = async form => {
     return JsonResponse({ message, field }, 400)
   }
 
-  const stuff = await theToken(form)
-  return JsonResponse({ message: 'Sent' }, 200)
+  try {
+    const sheets = await saveToSheets(form, GOOGLE_SHEET_ID)
+    return JsonResponse({ message: 'Sent' }, 200)
+  } catch (err) {
+    return JsonResponse({ message: err }, 500)
+  }
 }
 
 export default registerForm

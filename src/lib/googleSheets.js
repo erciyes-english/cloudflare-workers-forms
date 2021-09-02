@@ -28,28 +28,29 @@ const getAccessToken = async () => {
     })
     const jsonToken = await response.json()
     if (!jsonToken.access_token) throw new Error('No Token')
-    return jsonToken.accessToken
+    return jsonToken.access_token
   } catch (e) {
     return e
   }
 }
-const saveToSheets = async form => {
-  const accessToken = getAccessToken()
+const saveToSheets = async (form, sheetId) => {
+  const accessToken = await getAccessToken()
+  const range = 'A1'
+  const options = '?insertDataOption=INSERT_ROWS&valueInputOption=RAW'
+  const baseUrl = `https://sheets.googleapis.com/v4/spreadsheets/`
+  const fullUrl = `${baseUrl}${sheetId}/values/${range}:append${options}`
   try {
-    const sheetPost = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/A1:append?insertDataOption=INSERT_ROWS&valueInputOption=RAW`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          values: [Object.values(form)],
-        }),
+    const sheetPost = await fetch(fullUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-    )
+      body: JSON.stringify({
+        values: [Object.values(form)],
+      }),
+    })
     return sheetPost.json()
   } catch (e) {
     return e
