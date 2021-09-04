@@ -28,13 +28,24 @@ const getAccessToken = async () => {
     })
     const jsonToken = await response.json()
     if (!jsonToken.access_token) throw new Error('No Token')
+    await GOOGLE.put('token', jsonToken.access_token, {
+      metadata: { exp: Date.now() / 1000 + 3000 },
+    })
     return jsonToken.access_token
   } catch (e) {
     return e
   }
 }
 const saveToSheets = async (form, sheetId) => {
-  const accessToken = await getAccessToken()
+  const GoogleKv = await GOOGLE.getWithMetadata('token')
+  const expKv = GoogleKv.metadata ? GoogleKv.metadata.exp : 0
+  const accessKv = GoogleKv.value
+
+  let accessToken = accessKv
+  if (expKv <= Date.now() / 1000) {
+    accessToken = await getAccessToken()
+  }
+
   const range = 'A1'
   const options = '?insertDataOption=INSERT_ROWS&valueInputOption=RAW'
   const baseUrl = `https://sheets.googleapis.com/v4/spreadsheets/`

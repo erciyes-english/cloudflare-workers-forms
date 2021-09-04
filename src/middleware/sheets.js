@@ -4,7 +4,7 @@ import saveToSheets from '../lib/googleSheets'
 const sheets = sheetId => async req => {
   const { data } = req
   try {
-    const sheets = await saveToSheets(data, sheetId)
+    await saveToSheets(data, sheetId)
   } catch (err) {
     JsonResponse({ message: 'Google Sheets Error.' }, 500)
   }

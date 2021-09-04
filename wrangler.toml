@@ -5,3 +5,7 @@ account_id = "d911fb5d5feadb71049c55a438c52f65"
 workers_dev = true
 route = ""
 zone_id = ""
+
+kv_namespaces = [ 
+  { binding = "GOOGLE", preview_id = "caa9a3745c28401d9ae283b55ad2b20b", id = "82494982010b4d6480751fbcd7293ac4" }
+]
