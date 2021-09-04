@@ -1,5 +1,5 @@
 import { JsonResponse } from '../lib/helpers'
-const email = info => async req => {
+const email = async req => {
   const { data } = req
   const fullUrl = `https://api.sendgrid.com/v3/mail/send`
   const body = {
