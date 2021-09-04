@@ -25,10 +25,6 @@ module.exports.default = {
       format: 'tel',
       maxLength: 200,
     },
-    fname: {
-      type: 'string',
-    },
-
     interest: {
       type: 'string',
       maxLength: 100,

@@ -18,8 +18,8 @@ const compileAndSave = (schema, name) => {
   fs.writeFileSync(path.join(__dirname, `/${name}.js`), moduleCode)
 }
 
-const leadFormSchema = require('../forms/leadForm.schema').default
+const leadFormSchema = require('../schemas/leadForm.schema').default
 compileAndSave(leadFormSchema, 'leadForm.validate')
 
-const registerFormSchema = require('../forms/registerForm.schema').default
+const registerFormSchema = require('../schemas/registerForm.schema').default
 compileAndSave(registerFormSchema, 'registerForm.validate')

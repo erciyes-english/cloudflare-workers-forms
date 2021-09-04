@@ -1,22 +1,31 @@
-import leadForm from './forms/leadForm'
-import registerForm from './forms/registerForm'
 import { JsonResponse } from './lib/helpers'
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+import { Router } from 'itty-router'
+import validate from './middleware/validate'
+import sheets from './middleware/sheets'
+import email from './middleware/email'
 
-const handleRequest = async req => {
-  if (req.method === 'POST') {
-    return await handlePost(req)
-  }
-  return JsonResponse({ message: 'Not Allowed' }, 401)
-}
+import leadValidate from './scripts/leadForm.validate'
+import registerValidate from './scripts/registerForm.validate'
 
-const handlePost = async req => {
-  const form = await req.json()
-  if (!form.id) return JsonResponse({ message: 'Not Allowed' }, 401)
-  if (form.id === 'lead') return await leadForm(form)
-  if (form.id === 'register') return await registerForm(form)
-  return JsonResponse({ message: 'Not Allowed' }, 401)
-}
+const router = Router({ base: '/forms' })
+
+router.post(
+  '/lead',
+  validate(leadValidate),
+  sheets(GOOGLE_SHEET_ID),
+  email,
+  () => JsonResponse({ message: 'sent' }, 200),
+)
+router.post(
+  '/register',
+  validate(registerValidate),
+  sheets(GOOGLE_SHEET_ID),
+  email,
+  () => JsonResponse({ message: 'sent' }, 200),
+)
+router.all('*', () => JsonResponse({ message: 'Not Found.' }, 404))
+
+addEventListener('fetch', event =>
+  event.respondWith(router.handle(event.request)),
+)

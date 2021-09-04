@@ -37,6 +37,11 @@ fast-deep-equal@^3.1.1:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
+itty-router@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/itty-router/-/itty-router-2.4.2.tgz#5680f880f618ef9dc14148f47b9885bd09e5a015"
+  integrity sha512-VCJPoGKYrCoFSGQ9kko5prt66SHVppde498kj9XkMuZVrLCaG6xSIMIz/qaqW/mWk34BJPYGzhvWMf6l8g/CnA==
+
 js-base64@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.6.1.tgz#555aae398b74694b4037af1f8a5a6209d170efbe"

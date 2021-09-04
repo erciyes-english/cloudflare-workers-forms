@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@sagi.io/workers-jwt": "^0.0.20",
+    "itty-router": "^2.4.2",
     "libphonenumber-js": "^1.9.25"
   }
 }
