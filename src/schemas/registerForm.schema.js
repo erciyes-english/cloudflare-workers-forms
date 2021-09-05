@@ -1,7 +1,6 @@
 module.exports.default = {
   type: 'object',
   properties: {
-    id: { type: 'string' },
     course: { type: 'string', maxLength: 100 },
     fname: {
       type: 'string',
@@ -61,7 +60,6 @@ module.exports.default = {
     },
   },
   required: [
-    'id',
     'course',
     'fname',
     'lname',

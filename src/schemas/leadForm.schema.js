@@ -1,7 +1,6 @@
 module.exports.default = {
   type: 'object',
   properties: {
-    id: { type: 'string' },
     fname: {
       type: 'string',
       minLength: 2,
@@ -34,6 +33,6 @@ module.exports.default = {
       const: 'true',
     },
   },
-  required: ['id', 'fname', 'lname', 'email', 'phone', 'interest', 'gdpr'],
+  required: ['fname', 'lname', 'email', 'phone', 'interest', 'gdpr'],
   additionalProperties: false,
 }
