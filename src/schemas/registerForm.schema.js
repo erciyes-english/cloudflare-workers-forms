@@ -56,7 +56,7 @@ module.exports.default = {
     },
 
     gdpr: {
-      const: 'true',
+      const: true,
     },
   },
   required: [

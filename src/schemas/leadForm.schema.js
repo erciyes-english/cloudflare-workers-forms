@@ -30,7 +30,7 @@ module.exports.default = {
     },
 
     gdpr: {
-      const: 'true',
+      const: true,
     },
   },
   required: ['fname', 'lname', 'email', 'phone', 'interest', 'gdpr'],
