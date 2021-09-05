@@ -6,7 +6,7 @@ const validate = validateFunc => async req => {
   if (validateFunc.errors) {
     const message = validateFunc.errors[0].message
     const field = validateFunc.errors[0].instancePath.replace('/', '')
-    return JsonResponse({ message, field }, 400)
+    return JsonResponse({ message, field }, 400, req)
   }
   req.data = data
 }

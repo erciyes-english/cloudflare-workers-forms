@@ -18,16 +18,16 @@ router.post(
   validate(leadValidate),
   sheets(GOOGLE_SHEET_ID),
   email(LeadAdminEmail),
-  () => JsonResponse({ message: 'sent' }, 200),
+  req => JsonResponse({ message: 'sent' }, 200, req),
 )
 router.post(
   '/register',
   validate(registerValidate),
   sheets(GOOGLE_SHEET_ID),
   email(RegisterAdminEmail),
-  () => JsonResponse({ message: 'sent' }, 200),
+  req => JsonResponse({ message: 'sent' }, 200, req),
 )
-router.all('*', () => JsonResponse({ message: 'Not Found.' }, 404))
+router.all('*', req => JsonResponse({ message: 'Not Found.' }, 404, req))
 
 addEventListener('fetch', event =>
   event.respondWith(router.handle(event.request)),

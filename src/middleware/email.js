@@ -33,10 +33,10 @@ const email = settings => async req => {
     })
     if (sendEmail.status !== 202) {
       const result = await sendEmail.json()
-      return JsonResponse({ message: result.errors }, 500)
+      return JsonResponse({ message: result.errors }, 500, req)
     }
   } catch (e) {
-    return JsonResponse({ message: 'Email Delivery Error.' }, 500)
+    return JsonResponse({ message: 'Email Delivery Error.' }, 500, req)
   }
 }
 

@@ -6,7 +6,7 @@ const sheets = sheetId => async req => {
   try {
     await saveToSheets(data, sheetId)
   } catch (err) {
-    JsonResponse({ message: 'Google Sheets Error.' }, 500)
+    JsonResponse({ message: 'Google Sheets Error.' }, 500, req)
   }
 }
 
