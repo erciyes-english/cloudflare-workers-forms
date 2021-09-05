@@ -1,18 +1,14 @@
 import { JsonResponse } from '../lib/helpers'
-const email = async req => {
+const email = settings => async req => {
   const { data } = req
+  const emailSettings = settings(data)
   const fullUrl = `https://api.sendgrid.com/v3/mail/send`
   const body = {
+    template_id: emailSettings.emailTemplateId,
     personalizations: [
       {
-        to: [{ email: FORMS_ADMIN_LEAD_TO }],
-        subject: 'Api Test',
-      },
-    ],
-    content: [
-      {
-        type: 'text/plain',
-        value: `somebody`,
+        to: [{ email: emailSettings.to }],
+        dynamic_template_data: emailSettings.emailTemplateData,
       },
     ],
     from: {
