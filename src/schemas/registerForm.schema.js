@@ -48,11 +48,11 @@ module.exports.default = {
       maxLength: 100,
     },
     groupDiscount: {
-      enum: ['true', 'false'],
+      enum: [true, false],
     },
 
     otherDiscount: {
-      enum: ['true', 'false'],
+      enum: [true, false],
     },
 
     gdpr: {
