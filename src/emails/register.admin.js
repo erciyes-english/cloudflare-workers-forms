@@ -7,8 +7,8 @@ const RegisterAdminEmail = fields => {
     })
   }
   return {
-    to: FORMS_ADMIN_LEAD_TO,
-    emailTemplateId: 'd-ae12673e6708423d8fec01fb75f2ccfb',
+    to: FORMS_ADMIN_REGISTER_TO,
+    emailTemplateId: 'd-9779863aa89c4089887f412dd4341ef7',
     emailTemplateData: {
       items,
     },
