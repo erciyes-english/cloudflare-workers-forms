@@ -51,7 +51,7 @@ module.exports.default = {
       enum: [true, false],
     },
 
-    otherDiscount: {
+    studentDiscount: {
       enum: [true, false],
     },
 
