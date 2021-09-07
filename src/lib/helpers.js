@@ -1,4 +1,5 @@
 const allowedOrigins = [
+  'https://www.erciyesenglish.com',
   'https://erciyesenglish.com',
   'https://ee-website.pages.dev',
   'http://localhost:8000',
