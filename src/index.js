@@ -10,6 +10,7 @@ import registerValidate from './scripts/registerForm.validate'
 
 import LeadAdminEmail from './emails/lead.admin'
 import RegisterAdminEmail from './emails/register.admin'
+import RegisterClientEmail from './emails/register.client'
 
 const router = Router({ base: '/forms' })
 
@@ -25,6 +26,7 @@ router.post(
   validate(registerValidate),
   sheets(GOOGLE_SHEET_ID),
   email(RegisterAdminEmail),
+  email(RegisterClientEmail),
   req => JsonResponse({ message: 'sent' }, 200, req),
 )
 router.all('*', req => JsonResponse({ message: 'Not Found.' }, 404, req))

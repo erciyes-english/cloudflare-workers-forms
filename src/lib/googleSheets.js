@@ -59,7 +59,7 @@ const saveToSheets = async (form, sheetId) => {
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        values: [Object.values(form)],
+        values: [[...Object.values(form), new Date().toISOString()]],
       }),
     })
     return sheetPost.json()
