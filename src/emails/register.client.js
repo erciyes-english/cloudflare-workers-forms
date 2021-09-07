@@ -1,9 +1,9 @@
 const RegisterClientEmail = fields => {
   return {
-    to: FORMS_CLIENT_REGISTER_TO,
+    to: fields.email,
     emailTemplateId: 'd-498bfd7683e1401699ff16707f3c5f2b',
     emailTemplateData: {
-      fname: fields.fanme,
+      fname: fields.fname,
       lang: 'tr',
     },
   }
