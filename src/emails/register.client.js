@@ -4,7 +4,7 @@ const RegisterClientEmail = fields => {
     emailTemplateId: 'd-498bfd7683e1401699ff16707f3c5f2b',
     emailTemplateData: {
       fname: fields.fname,
-      lang: 'tr',
+      lang: fields.lang,
       subject:
         fields.lang === 'en'
           ? 'Erciyes English: Thank you for registering'
