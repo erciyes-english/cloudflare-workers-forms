@@ -58,6 +58,9 @@ module.exports.default = {
     gdpr: {
       const: true,
     },
+    lang: {
+      enum: ['en', 'tr'],
+    },
   },
   required: [
     'course',
@@ -70,6 +73,7 @@ module.exports.default = {
     'province',
     'installments',
     'gdpr',
+    'lang',
   ],
   additionalProperties: false,
 }
