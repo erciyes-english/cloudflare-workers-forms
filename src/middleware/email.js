@@ -9,6 +9,7 @@ const email = settings => async req => {
       {
         to: [{ email: emailSettings.to }],
         dynamic_template_data: emailSettings.emailTemplateData,
+        subject: emailSettings.subject,
       },
     ],
     from: {

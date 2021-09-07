@@ -8,6 +8,7 @@ const LeadAdminEmail = fields => {
   }
   return {
     to: FORMS_ADMIN_LEAD_TO,
+    subject: 'New Lead Submission from erciyesenglish.com',
     emailTemplateId: 'd-ae12673e6708423d8fec01fb75f2ccfb',
     emailTemplateData: {
       items,
