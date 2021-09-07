@@ -8,10 +8,10 @@ const RegisterAdminEmail = fields => {
   }
   return {
     to: FORMS_ADMIN_REGISTER_TO,
-    subject: 'New Registration from erciyesenglish.com',
     emailTemplateId: 'd-9779863aa89c4089887f412dd4341ef7',
     emailTemplateData: {
       items,
+      subject: 'New Registration from erciyesenglish.com',
     },
   }
 }
