@@ -7,7 +7,7 @@ const email = settings => async req => {
     template_id: emailSettings.emailTemplateId,
     personalizations: [
       {
-        to: [{ email: emailSettings.to }],
+        to: emailSettings.to.split(', ').map(item => ({ email: item })),
         dynamic_template_data: emailSettings.emailTemplateData,
       },
     ],
