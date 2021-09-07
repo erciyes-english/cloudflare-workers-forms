@@ -17,14 +17,14 @@ const router = Router({ base: '/forms' })
 router.post(
   '/lead',
   validate(leadValidate),
-  sheets(GOOGLE_SHEET_ID),
+  sheets(GOOGLE_SHEET_LEAD_ID),
   email(LeadAdminEmail),
   req => JsonResponse({ message: 'sent' }, 200, req),
 )
 router.post(
   '/register',
   validate(registerValidate),
-  sheets(GOOGLE_SHEET_ID),
+  sheets(GOOGLE_SHEET_REGISTER_ID),
   email(RegisterAdminEmail),
   email(RegisterClientEmail),
   req => JsonResponse({ message: 'sent' }, 200, req),
