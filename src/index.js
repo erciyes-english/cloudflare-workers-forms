@@ -1,4 +1,4 @@
-import { JsonResponse } from './lib/helpers'
+import { JsonResponse, isAllowedOrigin, corsHeaders } from './lib/helpers'
 
 import { Router } from 'itty-router'
 import validate from './middleware/validate'
@@ -31,6 +31,19 @@ router.post(
 )
 router.all('*', req => JsonResponse({ message: 'Not Found.' }, 404, req))
 
-addEventListener('fetch', event =>
-  event.respondWith(router.handle(event.request)),
-)
+addEventListener('fetch', event => {
+  const allowed = isAllowedOrigin(event.request)
+  if (!allowed) {
+    return event.respondWith(
+      new Response(JSON.stringify('Unauthorized'), {
+        status: 401,
+        headers: {
+          'content-type': 'application/json',
+          ...corsHeaders('https://www.erciyesenglish.com'),
+        },
+      }),
+    )
+  }
+
+  return event.respondWith(router.handle(event.request))
+})
