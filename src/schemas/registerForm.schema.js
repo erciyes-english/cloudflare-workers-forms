@@ -14,6 +14,17 @@ module.exports.default = {
       maxLength: 50,
     },
 
+    childfname: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 50,
+    },
+
+    childlname: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 50,
+    },
     email: {
       type: 'string',
       format: 'email',
